@@ -37,8 +37,8 @@ shinyServer(function(input, output) {
     lPrice = diff(log(closePrices[[stock]]))
     mean = mean(lPrice)
     sd = sd(lPrice)
-    n = length(lPrice)
-    error = qnorm(input$cLevel)*sd/sqrt(n)
+    n = length(lPrice) 
+    error = qt(input$cLevel, df=n-1)*sd/sqrt(n)
     left = round(mean - error, digits = 5)
     right = round(mean + error, digits = 5)
     
